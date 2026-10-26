@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-paper: #f3f0e8;
+  --color-card: #fffcf7;
+  --color-ink: #171614;
+  --color-ink-soft: #5c564c;
+  --color-line: #e2dacd;
+  --color-accent: #115e59;
+  --color-accent-deep: #0c4541;
+  --color-accent-soft: #e4f2ef;
+}
+
+html {
+  color-scheme: light;
+  background: var(--color-paper);
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse 70% 40% at 0% -10%, rgba(17, 94, 89, 0.08), transparent 55%),
+    var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  box-shadow: inset 0 3px 0 var(--color-accent);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #cfe7e3;
+  color: var(--color-ink);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.step-enter {
+  animation: rise 240ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.press:active {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step-enter {
+    animation: none;
+  }
+
+  .press:active {
+    transform: none;
+  }
+}
