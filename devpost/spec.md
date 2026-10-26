@@ -161,7 +161,7 @@ Tailwind is build-time only ([Vite install guide](https://tailwindcss.com/docs/i
 ## Important Failure Modes
 
 - **Empty idea, Continue** → the button doesn’t advance; the hint is an alert; the box is focused. PRD ref: `prd.md > States and Boundaries`.
-- **Clipboard missing or denied** → “Copy it from here” and a selected textarea. `shouldUseClipboardApi(false, …)` is the insecure-origin case.
+- **Clipboard missing, denied, or still pending after about a second** → “Copy it from here” and a selected textarea. `shouldUseClipboardApi(false, …)` is the insecure-origin case. A hung `writeText` must not leave the button spinning with no result.
 - **localStorage throws** → “Couldn’t save a draft in this browser. You can still finish the cut.”
 - **Garbage in the draft key** → `parseDraft` returns null and the page starts empty.
 

@@ -31,25 +31,26 @@ Build mode: fast — chosen in the run brief under the deadline. Less narration 
 
 ## Hands-on Checkpoints
 
-- [ ] Early usable behavior explored — the card after three answers, in the same browser session as the final pass (fast mode)
-- [ ] Final kick-the-tires exploration and feedback completed
+- [x] Early usable behavior explored — browser walk of idea → three questions → card, same session as the final pass (fast mode, delegated run)
+- [x] Final kick-the-tires exploration and feedback completed
 
 ## Final Review
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — browser pass matched the acceptance criteria. The only follow-up was the clipboard hang timeout, which keeps the fallback `prd.md > The card` already required. Chintey still records the demo video; that is ship work, not an open product change.
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — guided route, focused alternative, prior practice connected, or brief recap
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
+- [x] Learning activity complete — focused alternative for a plan-first run: the no-model cut, and the clipboard uncertainty
+- [x] Optional edit and transfer reflection addressed — not applicable in this delegated run; no live edit, reflection not answered in session
+- [x] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse
 
-Activity and evidence: not recorded yet
-Route and stops: not recorded yet
-Edit outcome: not recorded yet
-Reflection: not recorded yet
-Activity mode: not recorded yet
+Activity and evidence: `npm run check` locks the kernel sentence in `scripts/check-build-cut.ts` against `buildCut`. A headless Chrome walk then denied `clipboard.writeText` (`NotAllowedError` on a secure localhost). `copyText` in `src/lib/clipboard.ts` fell back within the 1.2s timeout, and the selected box contained `# First Cut` and the Cut reasons. Empty Continue, Back, Start over, draft restore, and a 390px skipped-temptation card were exercised in the same walk.
+Route and stops: reference route in `devpost/app-map.html` — `continueFrom` in `src/App.tsx`, `buildCut` / `reasonFor` in `src/lib/buildCut.ts`, `CutCard` in `src/components/CutCard.tsx`. Not clicked through in an editor during this run.
+Edit outcome: not applicable
+Reflection: not answered in session — personal note stays out of this file
+Activity mode: focused alternative, with the app exercised in a browser and the map as a reference route
 
 ## Revisions
 
 - Card, copy, and draft shipped together — they are one screen; a card without Copy and Start over would not match `prd.md > The card`.
+- Headless Chrome rejects `clipboard.writeText` even on localhost. `copyText` now gives up after about a second so a hung permission check still opens the selected markdown box.

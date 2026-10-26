@@ -12,9 +12,25 @@ export async function copyText(text: string): Promise<CopyResult> {
     return "fallback";
   }
   try {
-    await clipboard.writeText(text);
+    await withTimeout(clipboard.writeText(text), 1200);
     return "copied";
   } catch {
     return "fallback";
   }
+}
+
+function withTimeout(work: Promise<void>, ms: number): Promise<void> {
+  return new Promise((resolve, reject) => {
+    const timer = window.setTimeout(() => reject(new Error("clipboard timeout")), ms);
+    work.then(
+      () => {
+        window.clearTimeout(timer);
+        resolve();
+      },
+      (error: unknown) => {
+        window.clearTimeout(timer);
+        reject(error instanceof Error ? error : new Error("clipboard failed"));
+      },
+    );
+  });
 }
