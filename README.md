@@ -25,7 +25,7 @@ npm run preview
 
 ## Demo
 
-The hackathon wants a 1–3 minute screen recording of this flow. The shot list is in [DEMO.md](DEMO.md). A deployed URL is optional and does not replace the video.
+The hackathon wants a 1–3 minute screen recording of this flow. The shot list is in [DEMO.md](DEMO.md). A deployed URL is optional and does not replace the video. Stills from a local pass are in `docs/screenshots/`.
 
 ## Planning
 
