@@ -1,7 +1,12 @@
 node_modules/
 dist/
+dist-ssr/
 .env
 .env.*
 !.env.example
 devpost/learner-profile.md
 .DS_Store
+*.local
+.vercel
+tmp/
+*.log
